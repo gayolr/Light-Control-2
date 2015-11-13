@@ -1,0 +1,47 @@
+<html>
+    
+    <! -- Tod lo que se ve, pero que hace que funcione-->
+    <head>
+        <meta charset = "utf-8"> <! -- es para poder poner acentos,etc -->
+        <meta name="viewport" content = "width=device-width">
+        <link href="estilos.css"rel="stylesheet" type="text">
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,500italic' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        
+    <img src="logo.png">
+      
+    <input type = "password" placeholder = "Contraseña de Acceso" id = "password">
+
+        
+        <p id="mensaje">BIENVENIDO</p>
+        
+        <button onclick="login()">Iniciar</button>
+
+    </body>
+    <script>
+        function login(){
+            //Capturar los Datos Escritos
+            password = document.getElementById('password').value;
+            
+            //Comparar con valores almacenados
+            passwordAlmacenado = localStorage.getItem('password');
+            
+            if(password == passwordAlmacenado){
+                window.location.assign('notas.html')
+            }else{
+                alert('ERROR: El password no existe');
+                document.getElementById('password').style.border="3px solid red";
+                //Mostrar mensaje
+                mensaje = document.getElementById('mensaje');
+                mensaje.style.opacity = "1";
+                mensaje.style.transition = ".6s all";
+                mensaje.innerHTML = "ERROR: El password no existe";
+                navigator.vibrate('100');
+                navigator.vibrate('200');
+            }
+        }
+
+    </script>
+    
+</html>

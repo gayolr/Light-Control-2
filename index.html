@@ -1,0 +1,58 @@
+<html>
+    
+    <! -- Tod lo que se ve, pero que hace que funcione-->
+    <head>
+        <meta charset = "utf-8"> <! -- es para poder poner acentos,etc -->
+        <meta name="viewport" content = "width=device-width">
+        <link href="estilos.css"rel="stylesheet" type="text">
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,500italic' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+              
+    <img src="logo.png">
+
+        <input type = "password" placeholder = "Contraseña de Acceso" id="password">
+        
+        <p id="mensaje">Tu contraseña es unica.</p>
+        
+        <button onclick="registro()">Guardar</button>
+        
+        
+    </body>
+    <script>
+        function registro(){
+                //DOM
+                pass1 = document.getElementById('password').value;
+                //Validacion contraseñas
+                if(pass1 == pass1){
+                //alert('Las contraseñas no coinciden');
+                
+                localStorage.setItem('password',pass1);
+
+                mensaje = document.getElementById('mensaje');
+                mensaje.style.opacity = "1";
+                mensaje.style.transition = ".6s all";
+                mensaje.innerHTML = "Contraseña Guardada";
+                
+                //Redirigir
+                //SetTimeout (function,retraso)
+                setTimeout(
+                    function(){
+                        window.location.assign('login.html');
+                    },3000);
+            }
+            else{
+                //Las contraseñas no coinciden
+                document.getElementById('password').style.border="3px solid red";
+                //Mostrar mensaje
+                mensaje = document.getElementById('mensaje');
+                mensaje.style.opacity = "1";
+                mensaje.style.transition = ".6s all";
+                mensaje.innerHTML = "Revisa tus contraseñas";
+
+                
+            }
+        }
+    </script>
+    
+</html>
